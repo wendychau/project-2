@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <script src="{{ url_for('static', filename='d3.js')}}"></script>
+    <script src="{{ url_for('static', filename='d3.layout.cloud.js')}}"></script>
+    <script src="{{ url_for('static', filename='d3.wordcloud.js')}}"></script>
+
+    <style type="text/css">
+    h1 {
+        font-family: Georgia, Times, 'Times New Roman', serif;
+        color: darkgray;
+        margin-top: 40px;
+        font-size: 4vw;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: Georgia, Times, 'Times New Roman', serif;
+        color: darkmagenta;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 100px;
+    }  
+
+    h3 {
+        color: darkmagenta;
+        margin-top: 5px;
+    }  
+
+    h4 {
+        margin-top: 5px;
+        margin-left: 120px;
+    } 
+     
+    body {
+        padding: 50;
+        margin: 0;
+    }
+  
+    #map,
+    body,
+    html {
+        height: 90%;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: none;
+	    stroke: black;
+	    shape-rendering: crispEdges;
+    }
+
+    .axis text {
+	    font-family: sans-serif;
+	    font-size: 11px;
+    }
+
+    </style>
+
+    <title>MOAR CATS</title>
+</head>
+<body>
+
+    <div id="app"><my-component msg="LOST KITTIES"></my-component></div>
+    
+    <center>
+    <div id="blush">
+            <img :src="myImage" @mouseover="myImage = otherImage" @mouseleave="myImage = originalImage" height="200" hspace="25" />
+    </div>
+    </center>
+
+    <hr><a name="navigation"></a>
+    <h2>QUICK NAVIGATION</h2>
+        <h4><a href="#mapjump">Cat Turf</a></h4>
+        <h4><a href="#cloudjump">Word Cloud</a></h4>
+        <h4><a href="#scatterjump">Scatterplot</a></h4>
+        <h4><a href="/api/v1.0/all_geoJSON"> → geoJSON</a></h4>
+
+    <hr><a name="mapjump"></a>
+    <h2>CAT TURF</h2>
+    <div id="map"></div>
+
+
+    <hr><a name="cloudjump"></a>
+    <h2>WORD "CLOWDER"</h2>
+    <h4><em>(clowder = a group of cats .. I'll show myself out ..)</em></h4>
+    <h4></h4>
+    <div id="wordcloud"></div>
+
+    <hr><a name="scatterjump"></a>
+    <h2>SCATTERPLOT</h2>
+    <div class="col-md-2"> </div>
+    <div class="col-md-5" id="scatterplot2"></div>
+    <div class="col-md-5" id="scatterplot"></div>
+   
+    <p>
+        <h4><a href="#navigation">Return To Navigation</a></h4>
+        <h4>Pet listings sourced from <a href="https://www.pawboost.com/">Pawboost</a> on 05/01/19</h4></p>
+
+        <div id="blush">
+                <img :src="myImage" @mouseover="myImage = otherImage" @mouseleave="myImage = originalImage" height="200" hspace="25" />
+        </div>
+
+    <script src="{{ url_for('static', filename='vue_final.js')}}"></script>
+
+    <script src="{{ url_for('static', filename='scatter_final.js')}}"></script>
+    <script src="{{ url_for('static', filename='scatter_final_alt.js')}}"></script>
+
+    <script src="{{ url_for('static', filename='cloud_final.js')}}"></script>
+    <script src="{{ url_for('static', filename='map_final.js')}}"></script>
+
+    </body>
+</html>
